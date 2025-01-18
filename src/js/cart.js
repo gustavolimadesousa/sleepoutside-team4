@@ -1,7 +1,7 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
-  return `<li class="cart-card divider">
+  const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
@@ -16,6 +16,8 @@ function cartItemTemplate(item) {
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <span class="remove" data-id="${item.Id}">X<span>
 </li>`;
+
+  return newItem;
 }
 
 function renderCartContents() {
