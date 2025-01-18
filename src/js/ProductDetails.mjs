@@ -9,7 +9,7 @@ function productDetailsTemplate(product) {
     <p class="product_description">${product.DescriptionHtmlSimple}</p>
     <div class="product-detail_add">
         <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
-        </div><section>`;
+        </div></section>`;
 
 }
 

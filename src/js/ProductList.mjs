@@ -1,23 +1,17 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
-//function renderList() {
-//    const htmlStrings = list.map(productCardTemplate);
-//    this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
-//}
-
 
 function productCardTemplate(product) {
-    const productCard = `<li class="product-card"> 
+    return `<li class="product-card"> 
     <a href="product_pages/index.html?product=${product.Id}">
-        <img src="${product.Image}" alt="Image of "> 
+        <img src="${product.Image}" alt="Image of "/> 
         <h3 class="car_brand">${product.Brand.Name}</h3>
         <h2 class="card_name">${product.Name}</h2>
         <p class="product-card_price">$${product.FinalPrice}</p>
-        <span>X<span>
+        <span>X</span>
         </a>
-        </li>`
-    return productCard
-
+        </li>`;
+    
 }
 
 
@@ -40,5 +34,6 @@ export default class ProductListing {
             renderListWithTemplate(productCardTemplate, this.listElement, list);
         }
     }
+    
 
 }
