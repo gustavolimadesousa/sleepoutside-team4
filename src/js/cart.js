@@ -1,7 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
-
-
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
@@ -48,4 +46,3 @@ function removeFromCart(targetElement) {
 }
 
 renderCartContents();
-

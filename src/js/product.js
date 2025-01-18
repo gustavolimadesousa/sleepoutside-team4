@@ -15,18 +15,18 @@ product.init();
 //const dataSource = new ProductData("tents");
 
 //function addProductToCart(product) {
- // const newCartList = getLocalStorage("so-cart");
-  // console.log(Array.isArray(newCartList));
- // newCartList.push(product);
- // setLocalStorage("so-cart", newCartList);
+// const newCartList = getLocalStorage("so-cart");
+// console.log(Array.isArray(newCartList));
+// newCartList.push(product);
+// setLocalStorage("so-cart", newCartList);
 //}
 // add to cart button event handler
 //async function addToCartHandler(e) {
- // const product = await dataSource.findProductById(e.target.dataset.id);
- // addProductToCart(product);
+// const product = await dataSource.findProductById(e.target.dataset.id);
+// addProductToCart(product);
 //}
 
 // add listener to Add to Cart button
 //document
 //  .getElementById("addToCart")
- // .addEventListener("click", addToCartHandler);
+// .addEventListener("click", addToCartHandler);
