@@ -1,4 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
@@ -40,3 +41,28 @@ function removeItem(index) {
 }
 
 renderCartContents();
+
+// Initialize behaviors after loading header and footer
+function initializeNavigation() {
+  // Example: Add event listeners to navigation links
+  const navLinks = document.querySelectorAll('#header a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      // Example behavior: Prevent default and log navigation
+      console.log(`Navigating to: ${link.href}`);
+      // event.preventDefault(); // Uncomment if using SPA navigation
+    });
+  });
+}
+
+initializeNavigation();
+
+
+// Load the header and footer into the page
+loadHeaderFooter("/partials/header.html", "/partials/footer.html")
+  .then(() => {
+    console.log("Header and footer loaded successfully");
+  })
+  .catch((error) => {
+    console.error("Error loading header and footer:", error);
+  });

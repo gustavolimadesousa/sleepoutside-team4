@@ -1,4 +1,5 @@
 import { setLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
@@ -64,3 +65,14 @@ export default class ProductDetails {
     );
   }
 }
+
+
+
+// Load the header and footer into the page
+loadHeaderFooter("/partials/header.html", "/partials/footer.html")
+  .then(() => {
+    console.log("Header and footer loaded successfully");
+  })
+  .catch((error) => {
+    console.error("Error loading header and footer:", error);
+  });
