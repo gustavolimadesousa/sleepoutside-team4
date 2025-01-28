@@ -2,7 +2,7 @@ import { getLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
+  <a href="#" class="cart-card__image">sdfqsfskdf
     <img
       src="${item.Image}"
       alt="${item.Name}"
