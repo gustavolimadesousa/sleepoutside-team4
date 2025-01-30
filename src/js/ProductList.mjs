@@ -16,14 +16,14 @@ function productCardTemplate(product) {
     }
 
     return `<li class="product-card"> 
-    <a href="/product_pages/index.html?product=${product.Id}">
-        <img src="${product.Images.PrimaryMedium}" alt="Image of "> 
-        <h3 class="card_brand">${product.Brand.Name}</h3>
-        <h2 class="card_name">${product.Name}</h2>
-        <p class="product-card_price">$${product.FinalPrice}</p>
-        ${isDiscounted ? `<p class="product-card_original_price">Was: $${product.SuggestedRetailPrice}</p>` : ""}
-        ${isDiscounted ? `<p class="product-card_percentage">${discountAmount}% off</p>` : ""}
-        </a>
+                <a href="/product_pages/index.html?product=${product.Id}">
+                    <img src="${product.Images.PrimaryMedium}" alt="Image of "> 
+                    <h3 class="card_brand">${product.Brand.Name}</h3>
+                    <h2 class="card_name">${product.Name}</h2>
+                    <p class="product-card_price">$${product.FinalPrice}</p>
+                    ${isDiscounted ? `<p class="product-card_original_price">Was: $${product.SuggestedRetailPrice}</p>` : ""}
+                    ${isDiscounted ? `<p class="product-card_percentage">${discountAmount}% off</p>` : ""}
+                </a>
         </li>`
 }
 
@@ -42,8 +42,14 @@ export default class ProductListing {
 
 
     renderList(list) {
+        // Sort the list by FinalPrice in ascending order
+        list.sort((a, b) => a.FinalPrice - b.FinalPrice);
+
+        // Limit the list to a maximum of 4 items
         if (list.length > 4) {
             list.length = 4
+
+            // Render the list
             renderListWithTemplate(productCardTemplate, this.listElement, list);
         }
     }
