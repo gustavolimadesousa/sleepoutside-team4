@@ -1,4 +1,9 @@
-import { setLocalStorage, getLocalStorage, updateCartCount } from "./utils.mjs";
+import {
+  setLocalStorage,
+  getLocalStorage,
+  updateCartCount,
+  loadHeaderFooter,
+} from "./utils.mjs";
 
 function productDetailsTemplate(product) {
   const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
@@ -12,20 +17,17 @@ function productDetailsTemplate(product) {
     ).toFixed(0);
   }
 
-  return `<section class="product-detail"> 
-    ${isDiscounted ? `<div class="discount-flag">${discountAmount}% OFF</div>` : ""}
-    <h3>${product.Brand.Name}</h3>
+  return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img class="divider" src="${product.Images.PrimaryLarge}" alt="${product.NameWithoutBrand}"/>
     <p class="product-card_price">$${product.FinalPrice}
     ${isDiscounted ? `<span class="product-card_original_price">Was: $${product.SuggestedRetailPrice}</span>` : ""}
-    ${isDiscounted ? `<p class="product-card_percentage">${discountAmount}% OFF</p>` : ""}
+    ${isDiscounted ? `<p class="product-card_percentage">${discountAmount}% off</p>` : ""}
     <p class="product_color">${product.Colors[0].ColorName}</p>
     <p class="product_description">${product.DescriptionHtmlSimple}</p>
     <div class="product-detail_add">
         <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
-    </div>
-  </section>`;
+        </div><section>`;
 }
 
 export default class ProductDetails {
@@ -55,6 +57,28 @@ export default class ProductDetails {
       shoppingCart.push(item);
       setLocalStorage("cart", shoppingCart);
       updateCartCount();
+      alert("added to cart");
+    } else {
+      var inputQuantity = shoppingCart[itemLocated].quantity;
+      var add = parseInt(inputQuantity) + 1;
+      inputQuantity = add;
+      shoppingCart[itemLocated].quantity = add;
+      setLocalStorage("cart", shoppingCart);
+      updateCartCount();
+      
+      alert("added to cart");
+    }
+    // Animate the cart icon
+    this.animateCartIcon();
+  }
+
+  animateCartIcon() {
+    const cartElement = document.querySelector("div.cart");
+    if (cartElement) {
+      cartElement.style.animation = "none"; // Reset animation
+      // Trigger reflow to restart the animation
+      cartElement.offsetHeight; // This is a hack to force reflow
+      cartElement.style.animation = "shoppingCart 0.35s 5";
     }
   }
 
