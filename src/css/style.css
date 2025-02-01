@@ -89,6 +89,54 @@ header {
   margin-top: -1.7em;
 }
 
+/* Alert styles */
+
+.alert-list {
+    border-radius: 4px;
+    text-align: center;
+    font-size: 12px;
+    position: relative;
+    animation: pulse 1.5s infinite alternate; /* Pulsating animation */
+}
+
+/* Remove margin and padding from paragraph inside alert */
+.alert-list p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Close button */
+.alert-list .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #721c24;
+    font-weight: bold;
+}
+
+.alert-list .close-btn:hover {
+    color: #491217;
+}
+
+/* Pulsating animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(245, 198, 203, 0.6);
+    }
+    100% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(245, 198, 203, 1);
+    }
+}
+
+
+
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
