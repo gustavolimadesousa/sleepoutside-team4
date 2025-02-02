@@ -2,29 +2,28 @@ import { getLocalStorage, setLocalStorage, updateCartCount } from "./utils.mjs";
 
 function cartItemTemplate(item) {
     const newItem = `<li class="cart-card divider">
-    <a href="#" class="cart-card__image">
-      <img
-        src="${item.Images.PrimaryMedium}"
-        alt="${item.Name}"
-      />
-    </a>
-    <a href="#">
-      <h2 class="card__name">${item.Name}</h2>
-    </a>
-    <p class="cart-card__color">${item.Colors[0].ColorName}</p> 
-    <div class="qty-input">
-      <button class="minusBtn" data-id=${item.Id} type="button">-</button>
-      <input class="product-qty" type="number" name="product-qty" min="0" max="10" value="1">
-      <button class="addBtn" data-id=${item.Id} type="button">+</button>
-  </div>
-    <p class="cart-card__price">$${item.FinalPrice}</p>
-    <span class="remove" data-id="${item.Id}">X<span>
+        <a href="#" class="cart-card__image">
+        <img
+            src="${item.Images.PrimaryMedium}"
+            alt="${item.Name}"
+        />
+        </a>
+        <a href="#">
+            <h2 class="card__name">${item.Name}</h2>
+        </a>
+        <p class="cart-card__color">${item.Colors[0].ColorName}</p> 
+            <div class="qty-input">
+            <button class="minusBtn" data-id=${item.Id} type="button">-</button>
+            <input class="product-qty" type="number" name="product-qty" min="0" max="10" value="1">
+            <button class="addBtn" data-id=${item.Id} type="button">+</button>
+        </div>
+        <p class="cart-card__price">$${item.FinalPrice}</p>
+        <span class="remove" data-id="${item.Id}">X<span>
   
-  </li>`;
+    </li>`;
 
     return newItem;
 }
-
 
 function removeFromCart(targetElement) {
     const clickedElement = targetElement.dataset.id;
@@ -50,11 +49,6 @@ function addQuantity(targetElement) {
 
     setLocalStorage("cart", cart);
     totalCart();
-
-
-
-
-
 }
 
 function minusQuantity(targetElement) {
@@ -96,7 +90,6 @@ function totalCart() {
         cartFooter.hidden = true;
     }
 }
-
 
 
 function renderCartContents() {
