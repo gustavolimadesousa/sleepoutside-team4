@@ -5,11 +5,11 @@ function convertToJson(res) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Bad Response");
+    throw { name: "ServicesError", message: jsonResponse };
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   constructor(category) {
     this.category = category;
     this.path = `../json/${this.category}.json`;
@@ -23,6 +23,16 @@ export default class ProductData {
     const Response = await fetch(`${baseURL}product/${id}`);
     const data = await convertToJson(Response);
     return data.Result;
+  }
+  async checkout(payload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload)
+    };
+    return await fetch(baseURL + "checkout/", options).then(convertToJson);
   }
 }
 
